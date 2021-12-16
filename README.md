@@ -1,4 +1,4 @@
-# <img src="https://laravel.com/img/logotype.min.svg" width="170"> Admin
+# <img src="https://laravel.com/img/logotype.min.svg" width="150"> Admin
 
 > Small cms system for your fantastic app with [Laravel](https://laravel.com/).
 
