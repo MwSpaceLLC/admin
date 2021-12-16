@@ -21,7 +21,7 @@ the [MwSpace Website](https://mwspace.com/it).
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within **mwspace/packlink-php**, please send an e-mail to Dev team
+If you discover a security vulnerability within **mwspace/admin**, please send an e-mail to Dev team
 via [dev@mwspace.com](mailto:dev@mwspace.com). All security vulnerabilities will be promptly addressed.
 
 ## License
