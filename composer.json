@@ -1,0 +1,50 @@
+{
+    "name": "mwspace/admin",
+    "description": "Small admin system for your fantastic Laravel's app",
+    "keywords": [
+        "admin",
+        "mwspace admin",
+        "laravel backend",
+        "laravel blog package"
+    ],
+    "homepage": "https://mwspace.com",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "MwSpace llc, srl",
+            "email": "dev@mwspace.com",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^5.6|^7.1|^8.0",
+        "guzzlehttp/guzzle": "^6.5.5|^7.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.3.3"
+    },
+    "autoload": {
+        "files": [
+            "src/Support/helpers.php"
+        ],
+        "psr-4": {
+            "MwSpace\\Admin\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@php artisan config:clear"
+        ],
+        "post-update-cmd": [
+            "@php artisan config:clear"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MwSpace\\Admin\\ServiceProvider"
+            ]
+        }
+    }
+}
