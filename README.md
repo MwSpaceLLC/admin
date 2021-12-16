@@ -1,4 +1,4 @@
-# e-blog <img src="https://laravel.com/img/logotype.min.svg" width="200">
+# <img src="https://laravel.com/img/logotype.min.svg" width="170"> Admin
 
 > Small cms system for your fantastic app with [Laravel](https://laravel.com/).
 
@@ -8,21 +8,11 @@ PHP >=7.0    | @Dev    | Laravel  | 1.0.0
 
 > #### Install Library:
 
-`composer require mwspace/e-blog`
+`composer require mwspace/admin`
 
-This command install your e-blog in a fresh laravel application
+This command install your admin in a fresh laravel application
 
-> #### Get all Status Dashboard:
-
-```php
-use MwSpace\Packlink\Models\Stat;
-
-$states = Stat::all(); // get all shipments states
-
-return json_encode($states); // decode Stat object class to json
-```
-
-The class will connect via api to your packlink account (pro.packlink.it)
+> Get start with path: */admin*
 
 ## Contributing
 
