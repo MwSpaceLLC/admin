@@ -28,15 +28,24 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | App Layout Language Lines
+    | Auth Language Lines
     |--------------------------------------------------------------------------
     |
-    | The following language lines are used during App Layout for various
+    | The following language lines are used during Auth for various
     | messages that we need to display to the user. You are free to modify
     | these language lines according to your application's requirements.
     |
     */
 
-    'title' => 'These credentials do not match our records.',
+    'login' => [
+        'title' => 'Accesso area riservata',
+        'forgot' => 'Password dimenticata',
+        'authenticate' => 'Avanti',
+        'remember' => 'Salva browser',
+        'email' => 'Indirizzo e-mail',
+        'password' => 'Parola d\'ordine',
+        'or' => 'oppure',
+        'laravel' => 'visita la guida ufficiale di Laravel',
+    ],
 
 ];

@@ -1,22 +1,19 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>{{$title??__('admin::app-layout.title')}}</title>
-
     <meta charset="UTF-8">
+    <title>{{$title??__('admin::app-layout.title')}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{$description??__('admin::app-layout.description')}}">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
 
 </head>
-<body>
-<h1 class="text-3xl font-bold underline">
-    Hello world!
-</h1>
+<body class="antialiased">
+{{$slot}}
 </body>
 </html>

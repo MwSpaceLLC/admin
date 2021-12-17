@@ -44,7 +44,8 @@ Route::prefix(config('admin.prefix'))->name('admin::')->group(function () {
      */
     Route::middleware('admin.guest')->prefix('/auth')->group(function () {
 
-        Route::view('/', 'admin::index')->name('login');
+        Route::view('/', 'admin::auth.index')->name('login');
+        Route::post('/', [\MwSpace\Admin\Controllers\Authenticate::class,'post'])->name('login.post');
 
     });
 

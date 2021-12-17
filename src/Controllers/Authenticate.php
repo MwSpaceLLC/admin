@@ -1,5 +1,7 @@
 <?php
 
+namespace MwSpace\Admin\Controllers;
+
 /**
  * @copyright 2021 | MwSpace llc, srl
  * @package mwspace/admin
@@ -24,19 +26,26 @@
  *
  */
 
-return [
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-    /*
-    |--------------------------------------------------------------------------
-    | App Layout Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during App Layout for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
+class Authenticate extends Controller
+{
+    function post(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
 
-    'title' => 'These credentials do not match our records.',
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('admin::index');
+        }
 
-];
+        return back()->withErrors([
+            'email' => __('admin::errors.login'),
+        ]);
+    }
+}

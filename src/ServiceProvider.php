@@ -27,10 +27,12 @@ namespace MwSpace\Admin;
  */
 
 use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider as MineServiceProvider;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\Router;
+use MwSpace\Admin\Exceptions\Handler;
 use MwSpace\Admin\Middleware\AdminAuth;
 use MwSpace\Admin\Middleware\AdminGuest;
 use MwSpace\Admin\View\Components\AppLayout;
@@ -43,6 +45,7 @@ class ServiceProvider extends MineServiceProvider
      *
      * @return void
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @throws Handler
      */
     public function boot()
     {
@@ -83,10 +86,27 @@ class ServiceProvider extends MineServiceProvider
 
     /**
      * Check configuration system
+     * @throws Handler
      */
     private function checkRequirements()
     {
-        //
+        if (!$this->app->runningInConsole()) {
+
+            // Test database connection
+            try {
+                DB::connection()->getPdo();
+            } catch (\Exception $e) {
+                throw new Handler("[laravel db connection] not configured, please set database");
+            }
+
+            // Test database tables
+            try {
+                DB::connection()->table('admins')->exists();
+            } catch (\Exception $e) {
+                throw new Handler("[mwspace/admins tables] not configured, please run (php artisan migrate)");
+            }
+
+        }
     }
 
     /**

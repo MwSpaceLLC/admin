@@ -28,7 +28,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | App Layout Language Lines
+    | Auth Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are used during App Layout for various
@@ -37,6 +37,10 @@ return [
     |
     */
 
-    'title' => 'These credentials do not match our records.',
+    'login' => [
+        'title' => 'Authenticate yourself',
+        'forgot' => 'Forgot password',
+        'authenticate' => 'Authenticate',
+    ],
 
 ];
