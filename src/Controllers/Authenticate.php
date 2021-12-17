@@ -26,20 +26,20 @@ namespace MwSpace\Admin\Controllers;
  *
  */
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class Authenticate extends Controller
 {
-    function post(Request $request): \Illuminate\Http\RedirectResponse
+    function login(Request $request): \Illuminate\Http\RedirectResponse
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->route('admin::index');
         }
@@ -47,5 +47,11 @@ class Authenticate extends Controller
         return back()->withErrors([
             'email' => __('admin::errors.login'),
         ]);
+    }
+
+    function logout()
+    {
+        Auth::logout();
+        return redirect()->route('admin::login');
     }
 }

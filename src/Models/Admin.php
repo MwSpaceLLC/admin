@@ -37,6 +37,11 @@ class Admin extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
+     * @var string
+     */
+    protected $table = "_admins";
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var string[]

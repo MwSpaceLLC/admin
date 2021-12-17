@@ -26,11 +26,11 @@ namespace MwSpace\Admin;
  *
  */
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Routing\Router;
-use MwSpace\Admin\Exceptions\Handler;
+use Illuminate\Support\Facades\DB;
 use MwSpace\Admin\Middleware\Auth;
 use MwSpace\Admin\Middleware\Guest;
+use MwSpace\Admin\Exceptions\Handler;
 use Illuminate\Support\ServiceProvider as MineServiceProvider;
 
 class ServiceProvider extends MineServiceProvider
@@ -96,7 +96,7 @@ class ServiceProvider extends MineServiceProvider
 
             // Test database tables
             try {
-                DB::connection()->table('admins')->exists();
+                DB::connection()->table('_admins')->exists();
             } catch (\Exception $e) {
                 throw new Handler("[mwspace/admins tables] not configured, please run migrate");
             }
@@ -154,7 +154,7 @@ class ServiceProvider extends MineServiceProvider
     private function registerMigrations()
     {
         if ($this->app->runningInConsole()) {
-            $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+            $this->loadMigrationsFrom(__DIR__ . '/migrations');
         }
     }
 

@@ -1,5 +1,7 @@
 <?php
 
+namespace MwSpace\Admin\Commands;
+
 /**
  * @copyright 2021 | MwSpace llc, srl
  * @package mwspace/admin
@@ -24,37 +26,41 @@
  *
  */
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Console\Command;
 
-/*
-|--------------------------------------------------------------------------
-| Backend e-shop Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::middleware('web')->prefix(config('admin.prefix'))->name('admin::')->group(function () {
+class Install extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'admin:install';
 
     /**
-     * Guest routes
+     * The console command description.
+     *
+     * @var string
      */
-    Route::middleware('admin.guest')->prefix('/auth')->group(function () {
-
-        Route::view('/', 'admin::auth.index')->name('login');
-        Route::post('/', [\MwSpace\Admin\Controllers\Authenticate::class, 'login'])->name('login.post');
-
-    });
+    protected $description = 'Install mwspace/admin in fresh laravel installation';
 
     /**
-     * Authenticate routes
+     * Create a new command instance.
+     *
+     * @return void
      */
-    Route::middleware('admin.auth')->group(function () {
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
-        Route::view('/', 'admin::index')->name('index');
-
-    });
-});
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
+    public function handle()
+    {
+        return Command::SUCCESS;
+    }
+}

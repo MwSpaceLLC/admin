@@ -1,7 +1,5 @@
 <?php
 
-namespace MwSpace\Admin\Console\Commands;
-
 /**
  * @copyright 2021 | MwSpace llc, srl
  * @package mwspace/admin
@@ -26,41 +24,45 @@ namespace MwSpace\Admin\Console\Commands;
  *
  */
 
-use Illuminate\Console\Command;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 
-class Install extends Command
+class CreateAdminsTable extends Migration
 {
     /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'admin:install';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Install mwspace/admin in fresh laravel installation';
-
-    /**
-     * Create a new command instance.
+     * Run the migrations.
      *
      * @return void
      */
-    public function __construct()
+    public function up()
     {
-        parent::__construct();
+        Schema::create('_admins', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+
+        DB::table('_admins')->insert([
+            'name' => 'Laravel',
+            'email' => 'admin@laravel.com',
+            'password' => Hash::make('laravel'),
+        ]);
     }
 
     /**
-     * Execute the console command.
+     * Reverse the migrations.
      *
-     * @return int
+     * @return void
      */
-    public function handle()
+    public function down()
     {
-        return Command::SUCCESS;
+        Schema::dropIfExists('_admins');
     }
 }
