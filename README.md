@@ -6,6 +6,8 @@ PHP Version  | Status  | Require  | version
 ------------ | ------- | -------- | -------
 PHP >=7.0    | @Dev    | Laravel  | 1.0.0
 
+![image](preview.png)
+
 > #### Install Library:
 
 `composer require mwspace/admin`
