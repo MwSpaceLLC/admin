@@ -18,7 +18,7 @@
 <div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
 
-        <x-admin::logo class="mx-auto h-16 w-auto"/>
+        <img class="mx-auto h-16 w-auto" src="https://laravel.com/img/logomark.min.svg" alt="Laravel" width="50" height="52">
 
         <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900">
             {{__('admin::auth.login.title')}}
@@ -33,7 +33,7 @@
     </div>
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <div class="bg-white py-8 px-4 shadow sm:px-10">
 
             {{$slot}}
 

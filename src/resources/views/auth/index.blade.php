@@ -4,7 +4,7 @@
 
         <x-admin::ui.input name="email" label="{{__('admin::auth.login.email')}}" required="true"/>
 
-        <x-admin::ui.input name="password" label="{!! __('admin::auth.login.password') !!}?" required="true"/>
+        <x-admin::ui.input name="password" label="{!! __('admin::auth.login.password') !!}" required="true"/>
 
         <div class="flex items-center justify-between">
             <div class="flex items-center">

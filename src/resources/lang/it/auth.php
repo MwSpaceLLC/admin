@@ -43,7 +43,7 @@ return [
         'authenticate' => 'Avanti',
         'remember' => 'Salva browser',
         'email' => 'Indirizzo e-mail',
-        'password' => 'Parola d\'ordine',
+        'password' => 'La tua password',
         'or' => 'oppure',
         'laravel' => 'visita la guida ufficiale di Laravel',
     ],
