@@ -25,8 +25,8 @@
  */
 
 return [
-    'admin::user' => [
+    'admin' => [
         'driver' => 'session',
-        'provider' => 'admin::users',
+        'provider' => 'admins',
     ]
 ];

@@ -30,7 +30,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminGuest
+class Guest
 {
     /**
      * Handle an incoming request.
@@ -41,7 +41,7 @@ class AdminGuest
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::guard('admin::user')->check()) {
+        if (Auth::guard('admin')->check()) {
             return redirect()->route('admin::index');
         }
 

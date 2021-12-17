@@ -26,17 +26,12 @@ namespace MwSpace\Admin;
  *
  */
 
-use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\ServiceProvider as MineServiceProvider;
-
-use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\Router;
 use MwSpace\Admin\Exceptions\Handler;
-use MwSpace\Admin\Middleware\AdminAuth;
-use MwSpace\Admin\Middleware\AdminGuest;
-use MwSpace\Admin\View\Components\AppLayout;
-use MwSpace\Admin\View\Components\AuthLayout;
+use MwSpace\Admin\Middleware\Auth;
+use MwSpace\Admin\Middleware\Guest;
+use Illuminate\Support\ServiceProvider as MineServiceProvider;
 
 class ServiceProvider extends MineServiceProvider
 {
@@ -96,14 +91,14 @@ class ServiceProvider extends MineServiceProvider
             try {
                 DB::connection()->getPdo();
             } catch (\Exception $e) {
-                throw new Handler("[laravel db connection] not configured, please set database");
+                throw new Handler("[sb connection] not configured, please set database");
             }
 
             // Test database tables
             try {
                 DB::connection()->table('admins')->exists();
             } catch (\Exception $e) {
-                throw new Handler("[mwspace/admins tables] not configured, please run (php artisan migrate)");
+                throw new Handler("[mwspace/admins tables] not configured, please run migrate");
             }
 
         }
@@ -125,8 +120,8 @@ class ServiceProvider extends MineServiceProvider
     {
         $router = $this->app->make(Router::class);
 
-        $router->aliasMiddleware('admin.auth', AdminAuth::class);
-        $router->aliasMiddleware('admin.guest', AdminGuest::class);
+        $router->aliasMiddleware('admin.auth', Auth::class);
+        $router->aliasMiddleware('admin.guest', Guest::class);
     }
 
     /**
@@ -183,8 +178,7 @@ class ServiceProvider extends MineServiceProvider
     private function registerComponents()
     {
         $this->loadViewComponentsAs('admin', [
-            AppLayout::class,
-            AuthLayout::class
+            //
         ]);
     }
 

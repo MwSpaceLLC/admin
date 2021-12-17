@@ -29,9 +29,9 @@ namespace MwSpace\Admin\Middleware;
 use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth as Authenticate;
 
-class AdminAuth
+class Auth
 {
     /**
      * Handle an incoming request.
@@ -42,7 +42,7 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::guard('admin::user')->check()) {
+        if (!Authenticate::guard('admin')->check()) {
             return redirect()->route('admin::login');
         }
 

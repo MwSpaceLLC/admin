@@ -37,6 +37,6 @@ return [
     |
     */
 
-    'title' => 'These credentials do not match our records.',
+    'title' => 'Benvenuto nel tuo pannello di amministrazione',
 
 ];

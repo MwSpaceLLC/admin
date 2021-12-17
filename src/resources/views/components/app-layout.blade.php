@@ -15,5 +15,15 @@
 </head>
 <body class="antialiased">
 {{$slot}}
+
+@if($errors->any())
+    @foreach ($errors->all() as $key => $error)
+        <x-admin::notification type="error" message="{{$error}}"></x-admin::notification>
+    @endforeach
+@endif
+
+@if(session('success'))
+    <x-admin::notification type="success" message="{{session('success')}}"></x-admin::notification>
+@endif
 </body>
 </html>

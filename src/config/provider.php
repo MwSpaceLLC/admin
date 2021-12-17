@@ -25,8 +25,8 @@
  */
 
 return [
-    'admin::users' => [
+    'admins' => [
         'driver' => 'eloquent',
-        'model' => \MwSpace\Admin\Models\User::class,
+        'model' => \MwSpace\Admin\Models\Admin::class,
     ]
 ];

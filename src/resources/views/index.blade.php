@@ -1,5 +1,3 @@
-<x-admin-app-layout>
-
-    admin-app-layout
-
-</x-admin-app-layout>
+<x-admin::app-layout>
+    ciao admin
+</x-admin::app-layout>

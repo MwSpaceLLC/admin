@@ -37,7 +37,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix(config('admin.prefix'))->name('admin::')->group(function () {
+Route::middleware('web')->prefix(config('admin.prefix'))->name('admin::')->group(function () {
 
     /**
      * Guest routes
@@ -45,7 +45,7 @@ Route::prefix(config('admin.prefix'))->name('admin::')->group(function () {
     Route::middleware('admin.guest')->prefix('/auth')->group(function () {
 
         Route::view('/', 'admin::auth.index')->name('login');
-        Route::post('/', [\MwSpace\Admin\Controllers\Authenticate::class,'post'])->name('login.post');
+        Route::post('/', [\MwSpace\Admin\Controllers\Authenticate::class, 'post'])->name('login.post');
 
     });
 
